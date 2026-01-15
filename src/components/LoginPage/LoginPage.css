@@ -1,0 +1,129 @@
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-page-container {
+  width: 420px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px 35px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  animation: popup 0.4s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.login-page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-page-title h2 {
+  text-transform: capitalize;
+  color: #e63946;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.login-page-title img {
+  width: 18px;
+  cursor: pointer;
+}
+
+.login-page-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.login-page-input label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+.login-page-input input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-page-input input:focus {
+  border-color: #e63946;
+}
+
+.login-page-container button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #e63946;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-page-container button:hover {
+  background: #d62828;
+}
+
+.login-page-condition {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #555;
+}
+.login-page-condition p {
+  margin: 0;
+  position: relative;
+  bottom: 7px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-page-condition input {
+  accent-color: #e63946;
+}
+
+.login-page-container p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #444;
+}
+
+.login-page-container span {
+  color: #e63946;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-page-container span:hover {
+  text-decoration: underline;
+}

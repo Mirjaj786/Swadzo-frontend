@@ -1,0 +1,134 @@
+.place-order {
+  margin-top: 100px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid rgb(230, 57, 70);
+}
+
+.place-order-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  gap: 30px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(230, 57, 70, 0.08);
+}
+
+.place-order-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.place-order-left h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.place-order-left input {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.place-order-left input:focus {
+  border-color: tomato;
+  box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.15);
+}
+
+.place-order-row {
+  display: flex;
+  gap: 10px;
+}
+
+.place-order-row input {
+  flex: 1;
+}
+
+.place-order-right {
+  width: 360px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #fff7f4;
+  border: 1px solid #ffe1da;
+}
+
+.place-order-right h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.order-summary div {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.order-summary hr {
+  border: none;
+  height: 1px;
+  background: #e2e2e2;
+}
+
+.order-summary .total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.place-order-btn {
+  width: 100%;
+  margin-top: 38px;
+  padding: 14px;
+  border: none;
+  border-radius: 40px;
+  background: #e64946;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.place-order-btn:hover {
+  background: #e5533d;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .place-order-container {
+    flex-direction: column;
+  }
+
+  .place-order-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .place-order {
+    padding: 10px;
+  }
+
+  .place-order-container {
+    padding: 15px;
+  }
+
+  .place-order-left h2 {
+    font-size: 20px;
+  }
+
+  .place-order-row {
+    flex-direction: column;
+  }
+}

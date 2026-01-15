@@ -1,0 +1,139 @@
+/* ===== GRID ===== */
+.search-food-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 30px 0;
+}
+
+/* ===== CARD ===== */
+.s-food-item {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.s-food-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== IMAGE ===== */
+.s-food-img-container {
+  position: relative;
+}
+
+.s-image-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.s-food-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== ADD / COUNTER ===== */
+.s-add-icon {
+  width: 35px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  cursor: pointer;
+}
+
+.s-food-counter {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background: #fff;
+  border-radius: 30px;
+  display: flex;
+  gap: 10px;
+  padding: 6px 10px;
+  align-items: center;
+}
+
+.s-food-counter img {
+  width: 18px;
+}
+
+/* ===== INFO ===== */
+.s-food-item-info {
+  padding: 16px;
+}
+
+.s-food-name-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.s-food-name-rating p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.s-food-name-rating p:hover {
+  color: tomato;
+  cursor: pointer;
+}
+
+.s-food-name-rating img {
+  width: 65px;
+}
+
+.s-food-description {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0;
+}
+
+.s-food-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f4a261;
+}
+
+.s-no-food {
+  display: grid;
+  grid-template-columns: 4fr;
+  align-items: center;
+  width: 80vw;
+  text-align: center;
+  margin-top: 60px;
+  border:1px dotted tomato ;
+  border-radius: 20px;
+  height: 50vh;
+}
+
+.s-no-food button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #f4a261;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.s-no-food button:hover{
+  background-color: tomato;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .search-food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .search-food-grid {
+    grid-template-columns: 1fr;
+  }
+}

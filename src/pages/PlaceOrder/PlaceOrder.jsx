@@ -19,6 +19,7 @@ function PlaceOrder() {
     landmark: "",
     fullAddress: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const onChangeHandler = (e) => {
     const name = e.target.name;
@@ -52,6 +53,7 @@ function PlaceOrder() {
     };
 
     try {
+      setLoading(true);
       let res = await axios.post(url + "/order/place", orderData, {
         headers: {
           token: token,
@@ -64,10 +66,12 @@ function PlaceOrder() {
         // toast.success("Order placed successfully!");
       } else {
         toast.error("Faile to place order. Please try again.");
+        setLoading(false);
       }
     } catch (err) {
       console.error("Place Order Error:", err.message);
       alert("Order failed");
+      setLoading(false);
     }
   };
 
@@ -185,8 +189,8 @@ function PlaceOrder() {
             </div>
           </div>
 
-          <button className="place-order-btn" type="submit">
-            PLACE ORDER
+          <button className="place-order-btn" type="submit" disabled={loading}>
+            {loading ? "Processing..." : "PLACE ORDER"}
           </button>
         </div>
       </form>

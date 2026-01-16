@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
+import "./LoginRole.css";
+import "./ForgotPasswordLink.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext.jsx";
 import axios from "axios";
@@ -15,7 +17,9 @@ function LoginPage({ setShowLogin }) {
     name: "",
     email: "",
     password: "",
+    role: "user"
   });
+  const [loading, setLoading] = useState(false);
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -26,6 +30,7 @@ function LoginPage({ setShowLogin }) {
 
   const handleSubmit = async (e) => {
     try {
+      setLoading(true);
       let newUrl = url;
       e.preventDefault();
 
@@ -48,6 +53,8 @@ function LoginPage({ setShowLogin }) {
     } catch (err) {
       console.log("Frontend auth error:", err.message);
       toast.error(err.response?.data?.message || "Something went wrong!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -102,9 +109,23 @@ function LoginPage({ setShowLogin }) {
             placeholder="Enter Password"
             required
           />
+          {cuurState === "Login" && (
+            <p className="forgot-password-link" onClick={() => { setShowLogin(false); navigate('/forgot-password'); }}>
+              Forgot Password?
+            </p>
+          )}
+          {cuurState === "sign up" && (
+            <div className="login-role">
+              <label>Select Role:</label>
+              <select name="role" onChange={onChangeHandler} value={data.role}>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+          )}
         </div>
-        <button type="submit">
-          {cuurState === "sign up" ? "Create Account" : "Login"}{" "}
+        <button type="submit" disabled={loading}>
+          {loading ? "Processing..." : (cuurState === "sign up" ? "Create Account" : "Login")}
         </button>
         <div className="login-page-condition">
           <input type="checkbox" required />

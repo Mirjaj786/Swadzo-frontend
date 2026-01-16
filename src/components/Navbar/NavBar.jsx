@@ -11,7 +11,7 @@ function NavBar({ setShowLogin, setShowSearch }) {
   const [menu, setMenu] = useState("home");
   const [showMenu, setShowMenu] = useState(false);
   const [showDropDown, setShowDropDown] = useState(true);
-  const { getTotalCartAmount, token, setToken, user_name } =
+  const { getTotalCartAmount, token, setToken, user_name, userRole } =
     useContext(StoreContext);
   const navigate = useNavigate();
 
@@ -101,6 +101,17 @@ function NavBar({ setShowLogin, setShowSearch }) {
                     <p>Orders</p>
                   </li>
                 </Link>
+                <hr />
+                <li onClick={() => {
+                  if (userRole === "admin") {
+                    window.location.href = `http://localhost:5174/?token=${token}`; // Assuming Admin runs on this port
+                  } else {
+                    toast.error("You are not an Admin");
+                  }
+                }}>
+                  <img src={assets.profile_icon} alt="admin" />
+                  <p>Admin Panel</p>
+                </li>
                 <hr />
                 <li onClick={logout}>
                   <img src={assets.logout_icon} alt="logout" />

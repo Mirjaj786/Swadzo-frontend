@@ -14,6 +14,9 @@ import "react-toastify/dist/ReactToastify.css";
 import MyOrder from "./pages/MyOrders/MyOrder.jsx";
 import SearchFood from "./pages/SearchFoundFood/SearchFood.jsx";
 import PageNotFound from "./pages/PageNotFound/PageNotFound.jsx";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword.jsx";
+import ResetPassword from "./pages/ResetPassword/ResetPassword.jsx";
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -33,6 +36,8 @@ const App = () => {
           <Route path="/myorders" element={<MyOrder />}></Route>
           <Route path="/food_details" element={<FoodDetails />}></Route>
           <Route path="/search_Food" element={<SearchFood />}></Route>
+          <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+          <Route path="/reset-password/:token" element={<ResetPassword />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>
         </Routes>
       </div>

@@ -12,9 +12,11 @@ const StoreContextProvider = (props) => {
   const [foodId, setFoodId] = useState("");
   const [userId, setUserId] = useState("");
   const [user_name, setUser_name] = useState("");
+  const [userRole, setUserRole] = useState("");
   const [searchFood, setSearchFood] = useState(null);
   const [avgRating, setAvgRating] = useState(0);
   const [allReviewsByFood, setAllReviewsByFood] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const url = "http://localhost:4000";
 
@@ -99,6 +101,8 @@ const StoreContextProvider = (props) => {
       setFoodList(res.data.data);
     } catch (error) {
       console.error("Error fetching food list:", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -107,6 +111,7 @@ const StoreContextProvider = (props) => {
     const grouped = {};
 
     reviews.forEach((review) => {
+      if (!review.food) return;
       const foodId = review.food._id;
 
       if (!grouped[foodId]) {
@@ -129,7 +134,7 @@ const StoreContextProvider = (props) => {
         toast.error("Review Not Found");
       }
     } catch (error) {
-      console.log(`error to find all review`);
+      console.error("Error finding all reviews:", error);
       return;
     }
   };
@@ -161,6 +166,7 @@ const StoreContextProvider = (props) => {
       });
       setUserId(res.data.user_id);
       setUser_name(res.data.user_name);
+      setUserRole(res.data.role);
     };
 
     fetchUser();
@@ -186,6 +192,8 @@ const StoreContextProvider = (props) => {
     setAvgRating,
     userId,
     user_name,
+    userRole,
+    loading,
   };
 
   return (

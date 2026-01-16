@@ -10,16 +10,16 @@ import { useEffect } from "react";
 function Verify() {
   const [searchParams, setSearchParams] = useSearchParams();
   const success = searchParams.get("success");
-  const orderId = searchParams.get("orderId");
+  const sessionId = searchParams.get("session_id");
   const navigate = useNavigate();
-  const { url, token } = useContext(StoreContext);
+  const { url, token, setCartItem } = useContext(StoreContext);
 
-  const verifyPayment = async (req, res) => {
+  const verifyPayment = async () => {
     try {
       const res = await axios.post(
         url + "/order/verify",
         {
-          orderId,
+          sessionId,
           success,
         },
         {
@@ -30,6 +30,7 @@ function Verify() {
       );
 
       if (res.data.success) {
+        setCartItem({});
         toast.success("Order Placed. Thank you for your payment!");
         navigate("/myorders");
       } else {

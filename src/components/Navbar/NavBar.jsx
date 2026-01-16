@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function NavBar({ setShowLogin, setShowSearch }) {
-  const url = import.meta.env.VITE_ADMIN_URL;
+  const VITE_ADMIN_URL = import.meta.env.VITE_ADMIN_URL;
   const [menu, setMenu] = useState("home");
   const [showMenu, setShowMenu] = useState(false);
   const [showDropDown, setShowDropDown] = useState(true);
@@ -105,7 +105,7 @@ function NavBar({ setShowLogin, setShowSearch }) {
                 <hr />
                 <li onClick={() => {
                   if (userRole === "admin") {
-                    window.location.href = `${url}?token=${token}`;
+                    window.location.href = `${VITE_ADMIN_URL}?token=${token}`;
                   } else {
                     toast.error("You are not an Admin");
                   }

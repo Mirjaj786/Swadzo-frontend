@@ -63,7 +63,6 @@ function PlaceOrder() {
       if (res.data.success) {
         const { session_url } = res.data;
         window.location.replace(session_url);
-        // toast.success("Order placed successfully!");
       } else {
         toast.error("Faile to place order. Please try again.");
         setLoading(false);

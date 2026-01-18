@@ -32,7 +32,7 @@ function SearchFood() {
               <div className="s-food-img-container">
                 <div className="s-image-container">
                   <img
-                    src={url + "/images/" + item.image}
+                    src={item.image.includes("http") ? item.image : url + "/images/" + item.image}
                     alt="Food"
                     className="s-food-image"
                   />

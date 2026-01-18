@@ -10,6 +10,7 @@ function Search({ setShowSearch }) {
   const { url, searchFood, setSearchFood } = useContext(StoreContext);
   const [input, setInput] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ function Search({ setShowSearch }) {
     }
 
     try {
+      setLoading(true);
       const res = await axios.get(`${url}/food/search`, {
         params: { input },
       });
@@ -35,6 +37,8 @@ function Search({ setShowSearch }) {
       }
     } catch (error) {
       toast.error("Search failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,8 +61,8 @@ function Search({ setShowSearch }) {
         </div>
 
         <div className="search-btn-div">
-          <button className="search-button" type="submit">
-            Search <SearchIcon />
+          <button className="search-button" type="submit" disabled={loading}>
+            {loading ? "Searching..." : <SearchIcon />}
           </button>
         </div>
       </form>

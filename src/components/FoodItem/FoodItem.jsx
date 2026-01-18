@@ -29,8 +29,8 @@ function FoodItem({ id, name, image, price, description, catagory }) {
     review.length === 0
       ? 0
       : (review.reduce((sum, r) => sum + r.rating, 0) / review.length).toFixed(
-          1
-        );
+        1
+      );
 
   useEffect(() => {
     getFoodId(id);
@@ -42,7 +42,7 @@ function FoodItem({ id, name, image, price, description, catagory }) {
       <div className="food-img-container">
         <div className="image-container">
           <img
-            src={url + "/images/" + image}
+            src={image.includes("http") ? image : url + "/images/" + image}
             alt="Food"
             className="food-image"
           />
@@ -75,7 +75,7 @@ function FoodItem({ id, name, image, price, description, catagory }) {
           <p>{name}</p>
         </div>
         <div className="_rating">
-           <span>{avgRating} &nbsp;★</span>
+          <span>{avgRating} &nbsp;★</span>
           <p>{review?.length || 0} reviews</p>
         </div>
         <p className="food-description">{description}</p>

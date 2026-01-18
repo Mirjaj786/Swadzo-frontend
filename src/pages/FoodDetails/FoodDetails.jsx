@@ -48,7 +48,7 @@ function FoodDetails() {
       const res = await axios.get(url + `/reviews/${foodId}`);
       // console.log(res.data.data);
       setReviewData(res.data.data);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handleReviewSubmit = async (e) => {
@@ -170,7 +170,7 @@ function FoodDetails() {
         <div className="food-img-container-details">
           <div className="image-container-details">
             <img
-              src={`${url}/images/${foodDetails.image}`}
+              src={foodDetails.image.includes("http") ? foodDetails.image : `${url}/images/${foodDetails.image}`}
               alt={foodDetails.name}
               className="food-image-details"
             />
